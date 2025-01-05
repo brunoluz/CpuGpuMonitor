@@ -9,7 +9,7 @@ namespace CpuGpuMonitor
 {
     internal class MonitorCore
     {
-        public readonly List<string> WordsToRemoveSensors = ["Max", "Average", "Package", "Hot Spot"];
+        public readonly List<string> WordsToRemoveSensors = ["Max", "Package", "Hot Spot", "CCD1"];
         private readonly Computer computer = new()
         {
             IsCpuEnabled = true,
@@ -47,7 +47,7 @@ namespace CpuGpuMonitor
                         DateTime = now,
                         HardwareName = hardware.Name,
                         SensorName = sensor.Name,
-                        Value = sensor.Value
+                        Value = sensor.Value ?? 0
                     });
                 }
             }
