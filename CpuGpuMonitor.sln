@@ -6,11 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02AD8C0D-F659-4535-8270-E3921360F881}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuGpuMonitor", "CpuGpuMonitor\CpuGpuMonitor.csproj", "{2B83FAEA-5058-4372-AAD0-C0C2AED1CCC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuGpuMonitor.Tests", "CpuGpuMonitor.Tests\CpuGpuMonitor.Tests.csproj", "{60472304-58E1-4FF7-8DEA-6D5975A6FD88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuGpuMonitor.UserInterface", "CpuGpuMonitor.UserInterface\CpuGpuMonitor.UserInterface.csproj", "{C455C3DA-F98A-4BF9-956E-49B9E7A82223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +29,10 @@ Global
 		{60472304-58E1-4FF7-8DEA-6D5975A6FD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60472304-58E1-4FF7-8DEA-6D5975A6FD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60472304-58E1-4FF7-8DEA-6D5975A6FD88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C455C3DA-F98A-4BF9-956E-49B9E7A82223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C455C3DA-F98A-4BF9-956E-49B9E7A82223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C455C3DA-F98A-4BF9-956E-49B9E7A82223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C455C3DA-F98A-4BF9-956E-49B9E7A82223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CpuGpuMonitor
 {
-    internal class MonitorCore
+    public class MonitorCore
     {
         public readonly List<string> WordsToRemoveSensors = ["Max", "Package", "Hot Spot", "CCD1"];
         private readonly Computer computer = new()
