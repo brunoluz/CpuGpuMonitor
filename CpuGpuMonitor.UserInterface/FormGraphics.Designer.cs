@@ -37,14 +37,16 @@
             // 
             plotView1.Dock = DockStyle.Fill;
             plotView1.Location = new Point(0, 0);
+            plotView1.Margin = new Padding(2);
             plotView1.Name = "plotView1";
             plotView1.PanCursor = Cursors.Hand;
-            plotView1.Size = new Size(1745, 795);
+            plotView1.Size = new Size(1222, 477);
             plotView1.TabIndex = 0;
             plotView1.Text = "plotView1";
             plotView1.ZoomHorizontalCursor = Cursors.SizeWE;
             plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
             plotView1.ZoomVerticalCursor = Cursors.SizeNS;
+            plotView1.Click += plotView1_Click;
             // 
             // timerUpdateSeries
             // 
@@ -53,12 +55,14 @@
             // 
             // FormGraphics
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1745, 795);
+            ClientSize = new Size(1222, 477);
             Controls.Add(plotView1);
+            Margin = new Padding(2);
             Name = "FormGraphics";
             Text = "CPU GPU Temp Monitor";
+            FormClosed += FormGraphics_FormClosed;
             Load += Form1_Load;
             ResumeLayout(false);
         }

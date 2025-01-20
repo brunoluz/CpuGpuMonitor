@@ -3,6 +3,7 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using System.Linq;
+using OxyPlot.Legends;
 
 namespace CpuGpuMonitor.UserInterface
 {
@@ -11,7 +12,10 @@ namespace CpuGpuMonitor.UserInterface
         readonly MonitorCore core = new();
         readonly List<LineSeries> lineSeries = [];
         readonly List<TemperatureMetric> allTemps = [];
-        readonly PlotModel plotModel = new() { Title = "Temperature Metrics" };
+        readonly PlotModel plotModel = new()
+        {
+            Title = "Temperature Metrics"
+        };
 
         public FormGraphics()
         {
@@ -21,6 +25,12 @@ namespace CpuGpuMonitor.UserInterface
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            plotModel.Legends.Add(new Legend
+            {
+                LegendTitle = "Legend",
+                LegendPosition = LegendPosition.RightBottom,
+            });
+
             this.plotView1.Model = plotModel;
         }
 
@@ -28,10 +38,10 @@ namespace CpuGpuMonitor.UserInterface
         {
             foreach (var metric in metrics)
             {
-                LineSeries lineSerie = lineSeries.FirstOrDefault(s => s.Title == metric.SensorName);
+                LineSeries lineSerie = lineSeries.FirstOrDefault(s => s.Title == metric.FullSensorName);
                 if (lineSerie is null)
                 {
-                    lineSerie = new LineSeries { Title = metric.SensorName };
+                    lineSerie = new LineSeries { Title = metric.FullSensorName };
                     this.plotModel.Series.Add(lineSerie);
                 }
 
@@ -46,6 +56,24 @@ namespace CpuGpuMonitor.UserInterface
             this.allTemps.InsertRange(0, newTemps);
             UpdatePlot(lineSeries, newTemps);
             this.plotView1.InvalidatePlot(true);
+        }
+
+        private void plotView1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormGraphics_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var csvFilePath = $"temperature_metrics_{DateTime.Now.ToString("yyyyMMddHHmmss")}.csv";
+            using (var writer = new StreamWriter(csvFilePath))
+            {
+                writer.WriteLine("DateTime,HardwareName,SensorName,Value,FullSensorName");
+                foreach (var temp in allTemps)
+                {
+                    writer.WriteLine($"{temp.DateTime},{temp.HardwareName},{temp.SensorName},{temp.Value},{temp.FullSensorName}");
+                }
+            }
         }
     }
 }

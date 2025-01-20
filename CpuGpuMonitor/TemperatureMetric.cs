@@ -6,5 +6,7 @@
         public required string HardwareName { get; set; }
         public required string SensorName { get; set; }
         public required float Value { get; set; }
+
+        public string FullSensorName { get { return this.HardwareName  + " - " + SensorName; } }
     }
 }
